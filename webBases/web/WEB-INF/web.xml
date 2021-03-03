@@ -3,4 +3,14 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
+
+    <servlet>
+<!--       填写servlet实现类的地址 -->
+        <servlet-name>oneservlet</servlet-name>
+        <servlet-class>com.jianzhou.oneServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>oneservlet</servlet-name>
+        <url-pattern>/myDefinedName</url-pattern>
+    </servlet-mapping>
 </web-app>

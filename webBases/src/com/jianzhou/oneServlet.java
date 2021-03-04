@@ -13,6 +13,9 @@ import java.io.IOException;
  * @Date 2021/3/3
  **/
 public class oneServlet extends HttpServlet {
+    public oneServlet(){
+        System.out.println("do oneServlet");
+    }
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("execute doGet end !");

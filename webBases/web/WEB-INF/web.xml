@@ -9,8 +9,18 @@
         <servlet-name>oneservlet</servlet-name>
         <servlet-class>com.jianzhou.oneServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>twoServlet</servlet-name>
+        <servlet-class>com.jianzhou.twoServlet</servlet-class>
+<!--       下面的配置代表的是服务器一开始运行的时候首先加载的里面的数字只要大于0就好了-->
+        <load-on-startup>2</load-on-startup>
+    </servlet>
     <servlet-mapping>
         <servlet-name>oneservlet</servlet-name>
         <url-pattern>/myDefinedName</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>twoServlet</servlet-name>
+        <url-pattern>/twoServlet</url-pattern>
     </servlet-mapping>
 </web-app>

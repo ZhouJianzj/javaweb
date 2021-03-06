@@ -12,18 +12,34 @@
       </configuration>
     </facet>
   </component>
-  <component name="NewModuleRootManager" inherit-compiler-output="true">
+  <component name="NewModuleRootManager">
+    <output url="file://$MODULE_DIR$/../../mangerSystem/out" />
+    <output-test url="file://$MODULE_DIR$/../../smangerSystem/out" />
     <exclude-output />
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="TomCatWitch" level="application_server_libraries" />
-    <orderEntry type="library" name="lib" level="project" />
-    <orderEntry type="library" name="mysql" level="project" />
-    <orderEntry type="library" name="mysql (2)" level="project" />
-    <orderEntry type="library" name="mysql (3)" level="project" />
-    <orderEntry type="library" name="演示" level="project" />
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES />
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://D:/InstallationPackage/mysql-connector-java-8.0.23.zip!/mysql-connector-java-8.0.23/src/build/java" />
+          <root url="jar://D:/InstallationPackage/mysql-connector-java-8.0.23.zip!/mysql-connector-java-8.0.23/src/demo/java" />
+          <root url="jar://D:/InstallationPackage/mysql-connector-java-8.0.23.zip!/mysql-connector-java-8.0.23/src/generated/java" />
+          <root url="jar://D:/InstallationPackage/mysql-connector-java-8.0.23.zip!/mysql-connector-java-8.0.23/src/legacy/java" />
+          <root url="jar://D:/InstallationPackage/mysql-connector-java-8.0.23.zip!/mysql-connector-java-8.0.23/src/main/core-api/java" />
+          <root url="jar://D:/InstallationPackage/mysql-connector-java-8.0.23.zip!/mysql-connector-java-8.0.23/src/main/core-impl/java" />
+          <root url="jar://D:/InstallationPackage/mysql-connector-java-8.0.23.zip!/mysql-connector-java-8.0.23/src/main/protocol-impl/java" />
+          <root url="jar://D:/InstallationPackage/mysql-connector-java-8.0.23.zip!/mysql-connector-java-8.0.23/src/main/user-api/java" />
+          <root url="jar://D:/InstallationPackage/mysql-connector-java-8.0.23.zip!/mysql-connector-java-8.0.23/src/main/user-impl/java" />
+          <root url="jar://D:/InstallationPackage/mysql-connector-java-8.0.23.zip!/mysql-connector-java-8.0.23/src/test/java" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="library" name="mysql-connector-java-8.0.23" level="project" />
   </component>
 </module>

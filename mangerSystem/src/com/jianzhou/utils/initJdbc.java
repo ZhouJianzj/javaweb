@@ -29,7 +29,7 @@ public class initJdbc {
      */
     public void createConnection(){
         try {
-           connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/mangerSystem?serverTimezone=CTT&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true",
+           connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/mangerSystem",
                    "root","123321");
         } catch (SQLException e) {
             e.printStackTrace();
@@ -41,7 +41,7 @@ public class initJdbc {
      */
     public PreparedStatement CreatePreparement(String sql){
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+             preparedStatement = connection.prepareStatement(sql);
         } catch (SQLException e) {
             e.printStackTrace();
         }finally {
@@ -78,15 +78,21 @@ public class initJdbc {
     public static void main(String[] args) {
         initJdbc initJdbc = new initJdbc();
         initJdbc.createConnection();
-        PreparedStatement preparedStatement = initJdbc.CreatePreparement("select userName from mangerSystem where id = 1");
+       PreparedStatement preparedStatement = initJdbc.CreatePreparement("select userName from users where id = 1");
+        ResultSet resultSet = null;
         try {
-            ResultSet resultSet = preparedStatement.executeQuery();
+           resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
-                String string = resultSet.getString(2);
+                String string = resultSet.getString(1);
                 System.out.println(string);
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            if (resultSet != null) {
+//                关闭resultSet and preparedStatement and connection
+                initJdbc.close(resultSet);
+            }
         }
     }
 }

@@ -15,6 +15,7 @@ public class ServletOne extends HttpServlet {
         Enumeration<String> parameterNames = request.getParameterNames();
         while (parameterNames.hasMoreElements()){
             String name = parameterNames.nextElement();
+//           根据name获取value
             String value = request.getParameter(name);
             System.out.println(name + value);
         }

@@ -4,5 +4,14 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
-<!--    每一个文件都需要配置的-->
+<!--    每一个动态文件都需要配置的-->
+
+    <servlet>
+        <servlet-name>userAddServlet</servlet-name>
+        <servlet-class>com.jianzhou.controller.userAddServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>userAddServlet</servlet-name>
+        <url-pattern>/user/addUser</url-pattern>
+    </servlet-mapping>
 </web-app>

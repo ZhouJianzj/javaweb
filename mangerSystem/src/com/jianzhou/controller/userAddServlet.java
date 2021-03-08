@@ -28,7 +28,13 @@ public class userAddServlet extends HttpServlet {
          gender = request.getParameter("gender");
         UserDao userDao = new UserDao();
         int i = userDao.userAdd(userName, pwd, email, gender);
+        response.setContentType("text/html");
+        response.setCharacterEncoding("utf-8");
         PrintWriter writer = response.getWriter();
-        writer.println(i);
+       if (i == 1){
+           writer.println("<br><br><br><br><center style=\"font-size: 30px;color: red;\">注册成功<center/>");
+       }else{
+           writer.println("<br><br><br><br><center style=\"font-size: 30px;color: red;\">注册失败<center/>");
+       }
     }
 }

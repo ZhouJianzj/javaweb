@@ -48,6 +48,10 @@ public class UserDao {
         return 0;
     }
 
+    /**
+     * 用户的查询
+     * @return
+     */
     public List userFind(){
         List list = new ArrayList();
         String sql = "select * from users";
@@ -72,6 +76,37 @@ public class UserDao {
         }
         return list;
     }
+
+    /**
+     * 用户登录
+     * @param userName
+     * @param password
+     * @return
+     */
+    public int login(String userName, String password ){
+        int a = 0;
+        String sql = "select count(*) from users where userName = ? and psd = ?";
+        initJdbc.createConnection();
+        PreparedStatement preparedStatement = initJdbc.CreatePreparement(sql);
+        ResultSet resultSet = null;
+        try {
+            preparedStatement.setString(1,userName);
+            preparedStatement.setString(2,password);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                a = resultSet.getInt(1);
+                return a;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally{
+            if (resultSet != null) {
+                initJdbc.close(resultSet);
+            }
+        }
+
+        return a;
+    }
     /**
      * 测试
      * @param args
@@ -80,7 +115,8 @@ public class UserDao {
         UserDao userDao = new UserDao();
 //        int i = userDao.userAdd("zhoujian", "123", "2998678997@qq.com", "男");
 //        System.out.println(i);
-        List list = userDao.userFind();
+//        List list = userDao.userFind();
+        System.out.println(userDao.login("zhoujian", "123"));
 
     }
 }

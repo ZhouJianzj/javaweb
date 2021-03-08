@@ -22,10 +22,10 @@ public class userAddServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //得到请求协议包头中传递过来的数据
         String userName,pwd,email,gender;
-         userName = request.getParameter("userName");
-         pwd = request.getParameter("pwd");
-         email = request.getParameter("email");
-         gender = request.getParameter("gender");
+        userName = request.getParameter("userName");
+        pwd = request.getParameter("pwd");
+        email = request.getParameter("email");
+        gender = request.getParameter("gender");
         UserDao userDao = new UserDao();
         int i = userDao.userAdd(userName, pwd, email, gender);
         response.setContentType("text/html");

@@ -21,7 +21,8 @@ public class usersFindServlet extends HttpServlet {
         List<UserFrm> list = userDao.userFind();
         response.setContentType("text/html; charset=UTF-8");
         PrintWriter writer = response.getWriter();
-        writer.println("<br><br><br><br><table border = \"1px\" align = \"center\"><tr><th>编号</th><th>用户名</th><th>密码</th><th>邮箱</th><th>性别</th></tr>");
+        writer.println("<br><br><br><br><table border = \"1px\" align = \"center\">" +
+                "<tr><th>编号</th><th>用户名</th><th>密码</th><th>邮箱</th><th>性别</th><th>操作</th></tr>");
         for (UserFrm userFrm : list){
             writer.println("<tr>");
             writer.println("<td>" + userFrm.getId() + "</td>");
@@ -29,6 +30,9 @@ public class usersFindServlet extends HttpServlet {
             writer.println("<td>" + userFrm.getPwd() + "</td>");
             writer.println("<td>" + userFrm.getEmail() + "</td>");
             writer.println("<td>" + userFrm.getGender() + "</td>");
+            writer.println("<td><a href =\"http://localhost:8080/mangerSystem_war_exploded/user/delete?id="
+                    + userFrm.getId() + "\"" +
+                    ">删除</a></td>");
             writer.println("</tr>");
         }
         writer.println("</table>");

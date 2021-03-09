@@ -107,6 +107,26 @@ public class UserDao {
 
         return a;
     }
+
+    /**
+     * 用户的删除
+     */
+    public int delete(String id){
+        int i = 0;
+        String sql = "delete from users where id = ?";
+        initJdbc.createConnection();
+        PreparedStatement preparedStatement = initJdbc.CreatePreparement(sql);
+        try {
+            preparedStatement.setInt(1,Integer.parseInt(id));
+            i = preparedStatement.executeUpdate();
+            return i;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally{
+            initJdbc.close();
+        }
+        return i;
+    }
     /**
      * 测试
      * @param args
@@ -116,7 +136,7 @@ public class UserDao {
 //        int i = userDao.userAdd("zhoujian", "123", "2998678997@qq.com", "男");
 //        System.out.println(i);
 //        List list = userDao.userFind();
-        System.out.println(userDao.login("zhoujian", "123"));
-
+//        System.out.println(userDao.login("zhoujian", "123"));
+//        System.out.println(userDao.delete("11"));
     }
 }

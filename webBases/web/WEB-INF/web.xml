@@ -43,8 +43,46 @@
         <servlet-class>com.jianzhou.fourServlet</servlet-class>
         <load-on-startup>2</load-on-startup>
     </servlet>
+    <servlet>
+        <servlet-name>DataChuanDiServlet</servlet-name>
+        <servlet-class>com.jianzhou.DataChuanDiServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DataChuanDiOneServlet</servlet-name>
+        <servlet-class>com.jianzhou.DataChuanDiOneServlet</servlet-class>
+    </servlet>
+
+
+
+    <servlet-mapping>
+        <servlet-name>DataChuanDiOneServlet</servlet-name>
+        <url-pattern>/dataChuanDiOne</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DataChuanDiServlet</servlet-name>
+        <url-pattern>/dataChuanDi</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>foutServlet</servlet-name>
         <url-pattern>/four</url-pattern>
+    </servlet-mapping>
+
+<!--    doServletContext-->
+    <servlet>
+        <servlet-name>doServletContext</servlet-name>
+        <servlet-class>com.jianzhou.doServletContext</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>doServletContext</servlet-name>
+        <url-pattern>/doServletContext</url-pattern>
+    </servlet-mapping>
+<!--    doServletContextOne-->
+    <servlet>
+        <servlet-name>doServletContextOne</servlet-name>
+        <servlet-class>com.jianzhou.doServletContextOne</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>doServletContextOne</servlet-name>
+        <url-pattern>/doServletContextOne</url-pattern>
     </servlet-mapping>
 </web-app>

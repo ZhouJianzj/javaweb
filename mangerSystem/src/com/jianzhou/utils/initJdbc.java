@@ -1,6 +1,10 @@
 package com.jianzhou.utils;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import java.sql.*;
+import java.util.Iterator;
+import java.util.Map;
 
 /**
  * @ClassName initJdbc
@@ -34,6 +38,26 @@ public class initJdbc {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+    public void createConnection(ServletContext request){
+//        Map keyMap = (Map) request.getAttribute("keyMap");
+//        //测试
+//        System.out.println(keyMap);
+//        Iterator iterator = keyMap.keySet().iterator();
+//        while (iterator.hasNext()){
+//            initJdbc initJdbc =(initJdbc) iterator.next();
+//
+//            //map中获取value的方法get（keyName）
+//            boolean falg = (Boolean) keyMap.get(initJdbc.connection);
+//            //判断是否被占用
+//            if (falg == true){
+//                //传递连接到当前的
+//                this.connection = connection;
+//                //表示被占用了
+//                falg = true;
+//                break;
+//            }
+//        }
     }
     /**
      *创建运输工具

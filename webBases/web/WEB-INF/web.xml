@@ -85,4 +85,23 @@
         <servlet-name>doServletContextOne</servlet-name>
         <url-pattern>/doServletContextOne</url-pattern>
     </servlet-mapping>
+
+<!--    httpServletRequst-->
+    <servlet>
+        <servlet-name>httpServletRequestOne</servlet-name>
+        <servlet-class>com.jianzhou.httpServletRequsetOne</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>httpServletRequestOne</servlet-name>
+        <url-pattern>/httpOne</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>httpServletRequestTwo</servlet-name>
+        <servlet-class>com.jianzhou.httpServletRequestTwo</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>httpServletRequestTwo</servlet-name>
+        <url-pattern>/RequestTwo</url-pattern>
+    </servlet-mapping>
 </web-app>

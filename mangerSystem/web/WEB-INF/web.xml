@@ -49,5 +49,8 @@
         <servlet-name>userDeleteServlet</servlet-name>
         <url-pattern>/user/delete</url-pattern>
     </servlet-mapping>
-
+<!--监听器的注册-->
+    <listener>
+        <listener-class>com.jianzhou.Listener.listenerOne</listener-class>
+    </listener>
 </web-app>

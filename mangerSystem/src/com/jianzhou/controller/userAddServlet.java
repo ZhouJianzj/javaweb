@@ -2,12 +2,15 @@ package com.jianzhou.controller;
 
 import com.jianzhou.dao.UserDao;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 
 public class userAddServlet extends HttpServlet {
     /**
@@ -26,8 +29,12 @@ public class userAddServlet extends HttpServlet {
         pwd = request.getParameter("pwd");
         email = request.getParameter("email");
         gender = request.getParameter("gender");
+        Date startDate = new Date();
         UserDao userDao = new UserDao();
+        ServletContext servletContext = request.getServletContext();
         int i = userDao.userAdd(userName, pwd, email, gender);
+        Date endDate = new Date();
+        System.out.println(startDate.getTime() - endDate.getTime());
         response.setContentType("text/html");
         response.setCharacterEncoding("utf-8");
         PrintWriter writer = response.getWriter();

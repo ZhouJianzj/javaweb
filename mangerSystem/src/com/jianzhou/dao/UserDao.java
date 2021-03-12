@@ -4,6 +4,8 @@ import com.jianzhou.entity.UserFrm;
 import com.jianzhou.utils.initJdbc;
 
 import javax.naming.Name;
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -28,9 +30,9 @@ public class UserDao {
      * @param gender
      * @return
      */
-    public int userAdd(String userName,String pwd, String email,String gender){
+    public int userAdd(String userName, String pwd, String email, String gender){
         String sql = "insert into users(userName,psd,email,gender)values(?,?,?,?)";
-        initJdbc.createConnection();
+        initJdbc.createConnection( );
         PreparedStatement preparedStatement = initJdbc.CreatePreparement(sql);
         try {
             preparedStatement.setString(1, userName);

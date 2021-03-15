@@ -26,15 +26,13 @@ public class SignInServlet extends HttpServlet {
             System.out.println("没有填写注册数据");
             return;}
         //检测是否存在相同的用户名
-        int countUserName = userDao.checkUserName(userFm);
-        System.out.println(countUserName);
-        System.out.println(userFm.getUserName() +userFm.getPsd());
+        int countUserName = userDao.checkUserName(request);
         if (countUserName >= 1){
             //用户名已存在,1表示用户名存在了，11 表示存储成功，0表示没有存储成功
             request.getRequestDispatcher("signIn.jsp?do=1").forward(request,response);
         }else {
             //插入用户的注册数据
-            int i = userDao.userSignIn(userFm);
+            int i = userDao.userSignIn(request);
             if (i == 1){
                 request.getRequestDispatcher("signIn.jsp?do=11").forward(request,response);
             }else{

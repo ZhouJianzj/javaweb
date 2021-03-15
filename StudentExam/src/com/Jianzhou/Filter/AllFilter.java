@@ -1,13 +1,12 @@
 package com.Jianzhou.Filter;
 
-import org.w3c.dom.html.HTMLHtmlElement;
+
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.security.Key;
+
 
 /**
  * @ClassName AllFilter

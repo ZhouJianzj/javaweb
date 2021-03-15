@@ -18,9 +18,13 @@ public class UserFm {
      * @param userName
      * @param psd
      */
+
     public UserFm(String userName, String psd) {
         this.userName = userName;
         this.psd = psd;
+    }
+
+    public UserFm() {
     }
 
     public UserFm(String userName, String psd, String email, String gender) {

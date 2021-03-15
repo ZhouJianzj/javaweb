@@ -36,6 +36,15 @@ public class Jdbc {
             e.printStackTrace();
         }
     }
+    public Connection createConnection(int t){
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/mangerSystem",
+                    "root","123321");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return connection;
+    }
 
     /**
      *创建运输工具
@@ -59,7 +68,8 @@ public class Jdbc {
         if (preparedStatement != null && connection != null) {
             try {
                 preparedStatement.close();
-                connection.close();
+
+//   连接池就不需要   connection.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -68,9 +78,8 @@ public class Jdbc {
     public void close(ResultSet resultSet){
         if (preparedStatement != null && connection != null) {
             try {
-                preparedStatement.close();
-                connection.close();
                 resultSet.close();
+                close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }

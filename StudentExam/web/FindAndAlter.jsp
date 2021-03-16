@@ -21,10 +21,8 @@
 
     }else if (num == 1){
 %>
-
+<center> <font color="red"  >修改成功！</font></center>
 <%
-    session.invalidate();
-//    response.sendRedirect("Login.html");
     return;
     }else if (num == 0){
 %>

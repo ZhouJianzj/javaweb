@@ -56,4 +56,21 @@
         <servlet-name>AlterServlet</servlet-name>
         <url-pattern>/alter</url-pattern>
     </servlet-mapping>
+<!--    试题的添加-->
+    <servlet>
+        <servlet-name>addQuestionServlet</servlet-name>
+        <servlet-class>com.Jianzhou.controller.addQuestionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>addQuestionServlet</servlet-name>
+        <url-pattern>/addQuestion</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>addAddServlet</servlet-name>
+        <servlet-class>com.Jianzhou.controller.addAddServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>addAddServlet</servlet-name>
+        <url-pattern>/addAdd</url-pattern>
+    </servlet-mapping>
 </web-app>

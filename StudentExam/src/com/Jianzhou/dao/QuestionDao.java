@@ -112,4 +112,28 @@ public class QuestionDao {
         }
         return list;
     }
+
+    /**
+     * 试题删除
+     * @param request
+     * @return
+     */
+    public int deleteQuestion(HttpServletRequest request){
+        int i = 0;
+        String id = request.getParameter("id");
+        if (id == null){
+            return i;
+        }
+        String sql = "delete from question where id = ?";
+        try {
+            PreparedStatement preparedStatement = getCon(request).prepareStatement(sql);
+            preparedStatement.setString(1, id);
+            i = preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally{
+            jdbc.close();
+        }
+        return i;
+    }
 }

@@ -24,7 +24,32 @@
     </table>
 </form>
 <br>
-
+<%
+    Integer delete = (Integer) session.getAttribute("delete");
+    System.out.println("删除操作(-1页面加载/1删除成功/0删除失败)" + delete);
+    if (delete == 0){
+%>
+<center><font color="red">删除失败!</font></center>
+<%
+    }else if (delete == 1){
+%>
+<center><font color="red">删除成功!</font></center>
+<%
+    }
+%>
+<%
+    Integer alter = (Integer) session.getAttribute("alter");
+    System.out.println("修改(-1页面加载/0修改失败/1修改成功)" + alter);
+    if (alter == 0){
+%>
+<center><font color="red">修改失败!</font></center>
+<%
+    }else if (alter == 1){
+%>
+<center><font color="red">修改成功!</font></center>
+<%
+    }
+%>
 <table border="" align="center">
     <tr>
         <th>编号</th>
@@ -34,6 +59,7 @@
         <th>选项C</th>
         <th>选项D</th>
         <th>答案</th>
+        <th colspan="2">操作</th>
     </tr>
     <%
         List question = (List) request.getAttribute("list");
@@ -57,6 +83,8 @@
         <td><%=optionC%></td>
         <td><%=optionD%></td>
         <td><%=rightAnswer%></td>
+        <td><a href="/myWeb/deleteQuestion?id=<%=id%>" ><input type="button" value="删除" ></a></td>
+        <td><a href="" ><input type="button" value="修改" ></a></td>
     </tr>
     <%
         }

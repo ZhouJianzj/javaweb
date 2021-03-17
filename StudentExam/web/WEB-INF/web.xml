@@ -73,4 +73,14 @@
         <servlet-name>addAddServlet</servlet-name>
         <url-pattern>/addAdd</url-pattern>
     </servlet-mapping>
+<!--    试题删除查询搜索-->
+<!--发现        -->
+    <servlet>
+        <servlet-name>findQuestionServlet</servlet-name>
+        <servlet-class>com.Jianzhou.controller.findQuestionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>findQuestionServlet</servlet-name>
+        <url-pattern>/find</url-pattern>
+    </servlet-mapping>
 </web-app>

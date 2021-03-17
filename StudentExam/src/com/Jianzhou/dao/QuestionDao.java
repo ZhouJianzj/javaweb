@@ -1,5 +1,6 @@
 package com.Jianzhou.dao;
 
+import com.Jianzhou.entity.QuestionFrm;
 import com.Jianzhou.utils.Jdbc;
 
 import javax.servlet.ServletContext;
@@ -7,9 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import java.awt.geom.RectangularShape;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @ClassName QuestionDao
@@ -43,16 +44,20 @@ public class QuestionDao {
         return con;
     }
 
+    /**
+     * 试题的添加
+     * @param request
+     * @return
+     */
     public int addQuestion(HttpServletRequest request){
-
         int i = 0;
-
-        if ( request.getParameter("a") == null ||
-                request.getParameter("b") == null ||
-                request.getParameter("c") == null ||
-                request.getParameter("d") == null||
+        if ( request.getParameter("A") == null ||
+                request.getParameter("C") == null ||
+                request.getParameter("D") == null ||
+                request.getParameter("B") == null||
                 request.getParameter("title") == null ||
                 request.getParameter("rightOption") == null){
+            System.out.println("其中有一个为空");
             return i;
         }
         String sql = "insert into question(title,optionA,optionB,optionC,optionD,rightAnswer) values(?,?,?,?,?,?)";
@@ -60,17 +65,51 @@ public class QuestionDao {
         try {
             preparedStatement = getCon(request).prepareStatement(sql);
             preparedStatement.setString(1,request.getParameter("title"));
-            preparedStatement.setString(2,request.getParameter("a"));
-            preparedStatement.setString(3,  request.getParameter("b"));
-            preparedStatement.setString(4, request.getParameter("c"));
-            preparedStatement.setString(5,request.getParameter("d"));
+            preparedStatement.setString(2,request.getParameter("A"));
+            preparedStatement.setString(3,  request.getParameter("B"));
+            preparedStatement.setString(4, request.getParameter("C"));
+            preparedStatement.setString(5,request.getParameter("D"));
             preparedStatement.setString(6,request.getParameter("rightOption"));
             i = preparedStatement.executeUpdate();
+            System.out.println("sql语句执行完毕! ");
         } catch (SQLException e) {
             e.printStackTrace();
         }finally {
             jdbc.close();
         }
         return i;
+    }
+
+    /**
+     * 试题发现
+     * @param request
+     * @return
+     */
+    public List findQuestion(HttpServletRequest request){
+        ArrayList<Object> list = new ArrayList<>();
+        String sql = "select * from question";
+        ResultSet resultSet = null;
+        try {
+            PreparedStatement preparedStatement = getCon(request).prepareStatement(sql);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                QuestionFrm questionFrm = new QuestionFrm();
+                questionFrm.setId(resultSet.getInt(1));
+                questionFrm.setTitle(resultSet.getString(2));
+                questionFrm.setOptionA(resultSet.getString(3));
+                questionFrm.setOptionB(resultSet.getString(4));
+                questionFrm.setOptionC(resultSet.getString(5));
+                questionFrm.setOptionD(resultSet.getString(6));
+                questionFrm.setRightAnswer(resultSet.getString(7));
+                list.add(questionFrm);
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            jdbc.close(resultSet);
+        }
+        return list;
     }
 }

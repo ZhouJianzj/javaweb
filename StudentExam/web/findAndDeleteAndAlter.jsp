@@ -84,7 +84,7 @@
         <td><%=optionD%></td>
         <td><%=rightAnswer%></td>
         <td><a href="/myWeb/deleteQuestion?id=<%=id%>" ><input type="button" value="删除" ></a></td>
-        <td><a href="" ><input type="button" value="修改" ></a></td>
+        <td><a href="/myWeb/findTwo?id=<%=id%>" ><input type="button" value="修改" ></a></td>
     </tr>
     <%
         }

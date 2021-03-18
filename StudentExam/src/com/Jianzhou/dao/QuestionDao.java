@@ -136,4 +136,73 @@ public class QuestionDao {
         }
         return i;
     }
+
+    /**
+     * find需要修改的试题
+     * @param request
+     * @return
+     */
+    public QuestionFrm  findQuestionTwo(HttpServletRequest request){
+            String sql = "select * from question where id = ?";
+            ResultSet resultSet = null;
+            QuestionFrm questionFrm = new QuestionFrm();
+            try {
+                PreparedStatement preparedStatement = getCon(request).prepareStatement(sql);
+                preparedStatement.setString(1,request.getParameter("id"));
+                resultSet = preparedStatement.executeQuery();
+                while (resultSet.next()){
+                    questionFrm.setId(resultSet.getInt(1));
+                    questionFrm.setTitle(resultSet.getString(2));
+                    questionFrm.setOptionA(resultSet.getString(3));
+                    questionFrm.setOptionB(resultSet.getString(4));
+                    questionFrm.setOptionC(resultSet.getString(5));
+                    questionFrm.setOptionD(resultSet.getString(6));
+                    questionFrm.setRightAnswer(resultSet.getString(7));
+
+                }
+
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }finally {
+                jdbc.close(resultSet);
+            }
+           return questionFrm;
+        }
+
+    /**
+     * 修改试题
+     * @param request
+     * @return
+     */
+    public int alertQuestion(HttpServletRequest request){
+        int i = 0;
+        String sql = "update question set title = ?,optionA = ?,optionB = ?,optionC = ?,optionD = ?,rightAnswer = ? where id = ?";
+        PreparedStatement preparedStatement = null;
+        if ( request.getParameter("A") == null ||
+                request.getParameter("C") == null ||
+                request.getParameter("D") == null ||
+                request.getParameter("B") == null||
+                request.getParameter("title") == null ||
+                request.getParameter("rightOption") == null){
+            return i;
+        }
+        try {
+            preparedStatement = getCon(request).prepareStatement(sql);
+            preparedStatement.setString(1,request.getParameter("title"));
+            preparedStatement.setString(2,request.getParameter("A"));
+            preparedStatement.setString(3,  request.getParameter("B"));
+            preparedStatement.setString(4, request.getParameter("C"));
+            preparedStatement.setString(5,request.getParameter("D"));
+            preparedStatement.setString(6,request.getParameter("rightOption"));
+            preparedStatement.setString(7,request.getParameter("id"));
+            i = preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally{
+            jdbc.close();
+        }
+        return i;
+    }
+
 }

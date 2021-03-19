@@ -16,8 +16,9 @@
 <body>
 <br><br><br><br><br>
 <%
-    QuestionFrm next = (QuestionFrm) request.getAttribute("obj");
-    Integer alter = (Integer) request.getAttribute("alter");
+
+    QuestionFrm next = (QuestionFrm) session.getAttribute("obj");
+    Integer alter = (Integer) session.getAttribute("alter");
     if (alter == 1){
 %>
 <center><font color="red">修改成功！</font></center>
@@ -36,7 +37,7 @@
         </tr>
         <tr>
             <td>编号</td>
-            <td><input type="text" name="id" value="<%=next.getId()%>" readonly/></td>
+            <td><input type="text" name="id" value="<%=next.getId()%>"  readonly/></td>
         </tr>
         <tr>
             <td>题目</td>
@@ -77,15 +78,15 @@
                 }
             %>
             <td>
-                <input type="radio" name="rightOption" value="a" <%=checkA%>> A
-                <input type="radio" name="rightOption" value="b" <%=checkB%>> B
-                <input type="radio" name="rightOption" value="c" <%=checkC%>> C
-                <input type="radio" name="rightOption" value="d" <%=checkD%>> D
+                <input type="radio" name="rightOption" value="A" <%=checkA%>> A
+                <input type="radio" name="rightOption" value="B" <%=checkB%>> B
+                <input type="radio" name="rightOption" value="C" <%=checkC%>> C
+                <input type="radio" name="rightOption" value="D" <%=checkD%>> D
             </td>
         </tr>
         <tr>
             <td align="right"><input type="submit" value="提交修改" /></td>
-            <td><a href="/myWeb/findTwo"><input type="button" value="跳转"></a></td>
+            <td><a href="/myWeb/find"><input type="button" value="跳转"></a></td>
         </tr>
     </table>
 </form>

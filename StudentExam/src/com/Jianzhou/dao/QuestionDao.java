@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.Period;
 import java.util.*;
 
 /**
@@ -203,6 +204,41 @@ public class QuestionDao {
             jdbc.close();
         }
         return i;
+    }
+
+    /**
+     * 试题的查找
+     * @param request
+     * @return
+     */
+    public List search(HttpServletRequest request){
+        ArrayList<Object> list = new ArrayList<>();
+        String title = request.getParameter("title");
+        String sql = "select * from question where title like ?\"%\" ";
+        ResultSet resultSet = null;
+        try {
+            PreparedStatement preparedStatement = getCon(request).prepareStatement(sql);
+            preparedStatement.setString(1,title);
+            resultSet = preparedStatement.executeQuery();
+           while (resultSet.next()){
+               QuestionFrm questionFrm = new QuestionFrm(
+                    resultSet.getInt(1),
+                    resultSet.getString(2),
+                    resultSet.getString(3),
+                    resultSet.getString(4),
+                    resultSet.getString(5),
+                    resultSet.getString(6),
+                    resultSet.getString(7));
+               System.out.println(questionFrm.getId() + "+++++++++++++++++++++++");
+               System.out.println(questionFrm.getTitle());
+               list.add(questionFrm);
+           }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            jdbc.close(resultSet);
+        }
+        return list;
     }
 
 }

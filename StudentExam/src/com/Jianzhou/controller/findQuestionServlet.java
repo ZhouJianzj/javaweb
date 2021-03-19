@@ -15,10 +15,9 @@ public class findQuestionServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         QuestionDao questionDao = new QuestionDao();
         List question = questionDao.findQuestion(request);
-        request.setAttribute("list",question);
         HttpSession session = request.getSession();
+        session.setAttribute("list",question);
         session.setAttribute("delete",-1);
-        session.setAttribute("alter",-1);
         request.getRequestDispatcher("findAndDeleteAndAlter.jsp").forward(request,response);
     }
 }

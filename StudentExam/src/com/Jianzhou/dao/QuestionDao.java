@@ -229,10 +229,42 @@ public class QuestionDao {
                     resultSet.getString(5),
                     resultSet.getString(6),
                     resultSet.getString(7));
-               System.out.println(questionFrm.getId() + "+++++++++++++++++++++++");
-               System.out.println(questionFrm.getTitle());
                list.add(questionFrm);
            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            jdbc.close(resultSet);
+        }
+        return list;
+    }
+
+    /**
+     * 随机生成试题
+     * @param request
+     * @param num
+     * @return
+     */
+    public List startTest(HttpServletRequest request,int num){
+        ArrayList<Object> list = new ArrayList<>();
+        String sql = "select * from question order by rand() limit  ?";
+        ResultSet resultSet = null;
+        try {
+            PreparedStatement preparedStatement = getCon(request).prepareStatement(sql);
+            preparedStatement.setInt(1,num);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                QuestionFrm questionFrm = new QuestionFrm(
+                        resultSet.getInt(1),
+                        resultSet.getString(2),
+                        resultSet.getString(3),
+                        resultSet.getString(4),
+                        resultSet.getString(5),
+                        resultSet.getString(6),
+                        resultSet.getString(7)
+                );
+               list.add(questionFrm);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
